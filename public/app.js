@@ -18,22 +18,29 @@ let conditions = [
 const ticTacToe = (element, index) => {
     // Your game logic here
 
-    /*
-    **Part 1: Winning Conditions (Add your code here)**
-
-    1. Implement the logic to check for winning conditions using the 'conditions' array.
-    2. Display a winning message in the 'result' element when a player wins.
-    3. Disable all buttons after a win.
-    */
-
-    // Your code to update the game state and check for a win
-    // ...
-
-    // Your code to display the current player's turn
-    // ...
-
-    // Your code to handle button and cell interactions
-    // ...
+    const ticTacToe = (element, index) => {
+        // Check if the selected cell is empty
+        if (cells[index] === '') {
+            cells[index] = currentPlayer;
+            element.textContent = currentPlayer;
+            
+            // Check for winning conditions
+            for (const condition of conditions) {
+                const [a, b, c] = condition;
+                if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c]) {
+                    result.textContent = `${currentPlayer} wins!`;
+                    btns.forEach(btn => btn.disabled = true); // Disable all buttons
+                    return; // Exit the function
+                }
+            }
+            
+            // Switch to the next player
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            
+            // Update the current player's turn in the 'result' element
+            result.textContent = `Current Player: ${currentPlayer}`;
+        }
+    };
 };
 
     /*
@@ -47,14 +54,22 @@ const ticTacToe = (element, index) => {
 
 // Function to reset the game
 const resetGame = () => {
-    // Your code to reset the game state
-    // ...
-
-    // Your code to update the 'result' element
-    // ...
-
-    // Your code to re-enable buttons
-    // ...
+    const resetGame = () => {
+        // Reset the game state
+        cells = ['', '', '', '', '', '', '', '', ''];
+        currentPlayer = 'X';
+        
+        // Clear the content of all cells and enable buttons
+        btns.forEach((btn, i) => {
+            btn.textContent = '';
+            btn.disabled = false;
+        });
+        
+        // Update the 'result' element
+        result.textContent = `Current Player: ${currentPlayer}`;
+    };
+    
+    document.querySelector('#reset').addEventListener('click', resetGame);
 };
 
 btns.forEach((btn, i) => {
