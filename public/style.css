@@ -9,4 +9,83 @@ body {
     font-family: "Radio Canada", sans-serif;
   }
   
-/* Enter your styling here */
+/* Header Styling */
+h1 {
+  text-align: center;
+  color: #fff; /* Bright white color */
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3); /* Subtle text shadow */
+  font-size: 50px;
+}
+
+/* Box Styling */
+#board {
+  display: flex;
+  flex-direction: column; /* Column direction for child elements */
+  align-items: center; /* Centered alignment */
+  margin: 35px; /* Margin of 35px on all sides */
+}
+
+/* Row Styling */
+.btn {
+  /* Existing button styles */
+  border: 2px solid #000;
+  border-radius: 5px;
+  width: 75px; /* Fixed width */
+  height: 75px; /* Fixed height */
+  font-size: 50px;
+  font-weight: 500;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+}
+
+/* Button Hover Styling */
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.9); /* Lighter background on hover */
+  cursor: pointer; /* Cursor changes to pointer on hover */
+}
+
+/* Disabled Button Styling */
+.btn:disabled {
+  color: #000; /* Black text for disabled buttons */
+  cursor: not-allowed; /* No-drop cursor for disabled buttons */
+}
+
+/* Result Container Styling */
+#result-container {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid #000; /* Border around the result container */
+  margin: 20px auto; /* Centered and margin spacing */
+  max-width: 200px;
+  text-align: center; /* Centered text alignment */
+}
+
+/* Result Styling */
+#result {
+  font-size: 25px;
+  color: #fff; /* Bright white color */
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3); /* Light text shadow */
+}
+
+/* Reset Styling */
+#reset-button {
+  text-align: center;
+  margin: 20px auto; /* Centered reset section */
+}
+
+/* Reset Button Styling */
+#reset-button {
+  border: 2px solid #000;
+  color: #000; /* Black text color */
+  background-color: #fff; /* White background */
+  padding: 10px 20px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Transition effect */
+}
+
+/* Reset Button Hover Styling */
+#reset-button:hover {
+  background-color: #000; /* Black background on hover */
+  color: #fff; /* White text color on hover */
+}
