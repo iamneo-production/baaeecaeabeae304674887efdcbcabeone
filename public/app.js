@@ -1,69 +1,59 @@
-// Initial game state
-let cells = ['', '', '', '', '', '', '', '', ''];
-let currentPlayer = 'X';
-let result = document.querySelector('#result'); // Updated selector
-let btns = document.querySelectorAll('.btn');
-let conditions = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-];
+const cells = document.querySelectorAll(".cell");
+const resultText = document.getElementById("winner-text");
+const resetButton = document.getElementById("reset-button");
+const resultDiv = document.getElementById("result");
 
-// Function to handle player moves
-const ticTacToe = (element, index) => {
-    // Check if the selected cell is empty
-    if (cells[index] === '') {
-        cells[index] = currentPlayer;
-        element.textContent = currentPlayer;
+let currentPlayer = "X";
+let board = ["", "", "", "", "", "", "", "", ""];
 
-        // Check for winning conditions
-        for (const condition of conditions) {
-            const [a, b, c] = condition;
-            if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c]) {
-                result.textContent = `${currentPlayer} wins!`;
-                btns.forEach(btn => btn.disabled = true); // Disable all buttons
-                return; // Exit the function
-            }
-        }
+// Check for a win or a draw
+function checkWinner() {
+    const winningCombinations = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],
+        [0, 4, 8], [2, 4, 6]
+    ];
 
-        // Check for a draw
-        if (!cells.includes('')) {
-            result.textContent = 'It\'s a draw!';
+    for (const combination of winningCombinations) {
+        const [a, b, c] = combination;
+        if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+            resultText.textContent = `${currentPlayer} wins!`;
+            resultDiv.style.display = "block";
             return;
         }
-
-        // Switch to the next player
-        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-
-        // Update the current player's turn in the 'result' element
-        result.textContent = `Current Player: ${currentPlayer}`;
     }
-};
 
-// Function to reset the game
-const resetGame = () => {
-    // Reset the game state
-    cells = ['', '', '', '', '', '', '', '', ''];
-    currentPlayer = 'X';
+    if (!board.includes("")) {
+        resultText.textContent = "It's a draw!";
+        resultDiv.style.display = "block";
+    }
+}
 
-    // Clear the content of all cells and enable buttons
-    btns.forEach((btn, i) => {
-        btn.textContent = '';
-        btn.disabled = false;
+// Handle cell click
+function handleCellClick(e) {
+    const cell = e.target;
+    const cellIndex = cell.getAttribute("id").split("-")[1];
+
+    if (board[cellIndex] === "" && !resultDiv.style.display) {
+        board[cellIndex] = currentPlayer;
+        cell.textContent = currentPlayer;
+        cell.classList.add(currentPlayer);
+        checkWinner();
+
+        currentPlayer = currentPlayer === "X" ? "O" : "X";
+    }
+}
+
+// Handle reset button click
+function handleResetClick() {
+    board = ["", "", "", "", "", "", "", "", ""];
+    cells.forEach(cell => {
+        cell.textContent = "";
+        cell.classList.remove("X", "O");
     });
+    resultDiv.style.display = "none";
+    currentPlayer = "X";
+}
 
-    // Update the 'result' element
-    result.textContent = `Current Player: ${currentPlayer}`;
-};
-
-btns.forEach((btn, i) => {
-    btn.addEventListener('click', () => ticTacToe(btn, i));
-});
-
-document.querySelector('#reset').addEventListener('click', resetGame);
-
+cells.forEach(cell => cell.addEventListener("click", handleCellClick));
+resetButton.addEventListener("click", handleResetClick);
