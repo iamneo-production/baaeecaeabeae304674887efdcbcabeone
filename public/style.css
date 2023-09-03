@@ -10,7 +10,7 @@ body {
   }
   
 /* Header Styling */
-h1 {
+h1#header {
   text-align: center;
   color: #fff; /* Bright white color */
   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3); /* Subtle text shadow */
@@ -18,14 +18,14 @@ h1 {
 }
 
 /* Box Styling */
-#board {
+.box {
   display: flex;
   flex-direction: column; /* Column direction for child elements */
   align-items: center; /* Centered alignment */
   margin: 35px; /* Margin of 35px on all sides */
 }
 
-/* Row Styling */
+/* Button Styling */
 .btn {
   /* Existing button styles */
   border: 2px solid #000;
@@ -52,7 +52,7 @@ h1 {
 }
 
 /* Result Container Styling */
-#result-container {
+.result {
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid #000; /* Border around the result container */
   margin: 20px auto; /* Centered and margin spacing */
@@ -68,13 +68,13 @@ h1 {
 }
 
 /* Reset Styling */
-#reset-button {
+.reset-button {
   text-align: center;
   margin: 20px auto; /* Centered reset section */
 }
 
 /* Reset Button Styling */
-#reset-button {
+#reset {
   border: 2px solid #000;
   color: #000; /* Black text color */
   background-color: #fff; /* White background */
@@ -85,7 +85,7 @@ h1 {
 }
 
 /* Reset Button Hover Styling */
-#reset-button:hover {
+#reset:hover {
   background-color: #000; /* Black background on hover */
   color: #fff; /* White text color on hover */
 }
