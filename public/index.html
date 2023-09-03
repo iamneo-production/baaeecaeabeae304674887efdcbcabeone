@@ -7,28 +7,14 @@
     <title>Tic Tac Toe</title>
 </head>
 <body>
-    <h1>Tic Tac Toe</h1>
-    <div id="game-board">
-        <div class="row">
-            <div class="cell" id="cell-1"></div>
-            <div class="cell" id="cell-2"></div>
-            <div class="cell" id="cell-3"></div>
-        </div>
-        <div class="row">
-            <div class="cell" id="cell-4"></div>
-            <div class="cell" id="cell-5"></div>
-            <div class="cell" id="cell-6"></div>
-        </div>
-        <div class="row">
-            <div class="cell" id="cell-7"></div>
-            <div class="cell" id="cell-8"></div>
-            <div class="cell" id="cell-9"></div>
-        </div>
+    <h1 id="header">Tic Tac Toe</h1>
+    <div id="board" class="box">
+        <!-- The game board will be generated dynamically using JavaScript -->
     </div>
-    <div id="result" class="hidden">
-        <p id="winner-text"></p>
-        <button id="reset-button">Reset</button>
+    <div id="result-container" class="result">
+        <p id="result">Player X's turn</p>
     </div>
-    <script src="script.js"></script>
+    <button id="reset" class="reset-button" disabled>Reset</button>
+    <script src="./app.js"></script>
 </body>
 </html>
